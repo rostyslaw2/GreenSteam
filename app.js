@@ -14,7 +14,11 @@ app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
   let error = "";
-  res.render("login", { error });
+  res.render("main", { error });
+});
+app.get("/register", function (req, res) {
+  let error = "";
+  res.render("register", { error });
 });
 
 const start = async () => {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <title>Main Page</title>
+  </head>
+  <body>
+    <header>
+      <h1>GITLER GAMES</h1>
+      <button class="register-button" id="registerBtn">R</button>
+    </header>
+    <div class="container">
+      <h2>Search Games</h2>
+      <div class="search-box">
+        <input type="text" placeholder="Search for games" />
+        <button>Search</button>
+      </div>
+      <div class="games">
+        <!-- Ігри будуть додані тут динамічно через JavaScript -->
+      </div>
+    </div>
+
+    <script>
+      // Get the button that opens the register page
+      var btn = document.getElementById("registerBtn");
+
+      // When the user clicks the button, redirect to the register page
+      btn.onclick = function () {
+        window.location.href = "/register";
+      };
+    </script>
+  </body>
+</html>
