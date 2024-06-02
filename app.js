@@ -9,6 +9,13 @@ app.use(express.static(__dirname + "/views"));
 app.use(express.json());
 
 require("dotenv").config();
+app.engine("ejs", require("ejs").renderFile);
+app.set("view engine", "ejs");
+
+app.get("/", function (req, res) {
+  let error = "";
+  res.render("login", { error });
+});
 
 const start = async () => {
   try {
