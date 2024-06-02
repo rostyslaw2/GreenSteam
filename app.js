@@ -12,8 +12,8 @@ require("dotenv").config();
 
 const start = async () => {
   try {
-    await mongoose.connect(`${process.env.DB_URL}`);
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    await mongoose.connect(`${process.env.URL}`);
+    app.listen(PORT, () => console.log(`server started on port ${PORT}`));
   } catch (err) {
     console.log(err);
   }
