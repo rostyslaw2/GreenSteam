@@ -18,4 +18,9 @@
         <a href="/login">Already have an account? Login</a>
     </div>
 </body>
+<main>
+    <% if (error) { %>
+    <h1 class="error"><%= error %></h1>
+    <% } %>
+  </main>
 </html>

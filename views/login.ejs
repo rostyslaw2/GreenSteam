@@ -17,4 +17,9 @@
         <a href="/register">Don't have an account? Register</a>
     </div>
 </body>
+<main>
+    <% if (error) { %>
+    <h1 class="error"><%= error %></h1>
+    <% } %>
+  </main>
 </html>
