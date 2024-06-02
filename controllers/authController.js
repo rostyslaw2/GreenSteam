@@ -33,7 +33,7 @@ class authController {
           .json({ message: "Користувач з таким email вже існує" });
       }
       const hashPassword = bcrypt.hashSync(password, 7);
-      const userRole = await Role.findOne({ value: "ADMIN" });
+      const userRole = await Role.findOne({ value: "USER" });
       const user = new User({
         username,
         password: hashPassword,
