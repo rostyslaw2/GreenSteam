@@ -1,3 +1,5 @@
+//models/Role.js
+
 const { Schema, model } = require("mongoose");
 
 const Role = new Schema({

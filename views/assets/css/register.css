@@ -1,55 +1,173 @@
 body {
-    background-color: #f0f8ff;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url("./images/maind-background.jpeg");
+}
+
+header {
+  position: relative;
+  color: #c7d5e0;
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background: none; /* Убираем фон */
+}
+
+.add-button-container {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.register-button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(92, 126, 16, 0.8); /* Темно-зелений і трохи прозорий */
+  border: 2px solid #5c7e10;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: rgba(
+    75,
+    105,
+    47,
+    0.9
+  ); /* Напівпрозорий темно-зелений при наведенні */
 }
 
 .container {
-    width: 300px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  width: 80%;
+  height: calc(
+    100vh - 60px
+  ); /* Висота контейнера з урахуванням віднімання висоти хедера */
+  margin: 20px auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
+  backdrop-filter: blur(10px); /* Розмиття фону */
+  border-radius: 8px;
+  padding: 20px;
+  border: 2px solid #c7d5e0; /* Обведення важливих елементів */
+  z-index: 2;
+  overflow-y: scroll; /* Додано вертикальну прокрутку */
+  scrollbar-width: none; /* Для приховування скролбару в Firefox */
+  -ms-overflow-style: none; /* Для приховування скролбару в IE та Edge */
+}
+
+.container::-webkit-scrollbar {
+  width: 0; /* Для приховування скролбару в Chrome, Safari та Opera */
 }
 
 h2 {
-    text-align: center;
-    color: #333;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
+  backdrop-filter: blur(10px); /* Розмиття фону */
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #c7d5e0;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  background-color: #1b2838;
+  color: #c7d5e0;
 }
 
 button {
-    padding: 10px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 10px 15px;
+  background-color: rgba(92, 126, 16, 0.8);
+  color: #ffffff;
+  border: 2px solid #5c7e10;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
-    background-color: #218838;
+  background-color: rgba(75, 105, 47, 0.9);
 }
 
-a {
-    text-align: center;
-    display: block;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
 
-a:hover {
-    text-decoration: underline;
+.game-card {
+  background-color: rgba(
+    42,
+    71,
+    94,
+    0.8
+  ); /* Напівпрозорий і напіврозмитий фон */
+  border: 2px solid #000000;
+  border-radius: 8px;
+  padding: 15px;
+  width: 300px; /* Фіксована ширина */
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-card img {
+  width: 100%; /* Максимальна ширина зображення дорівнює ширині картки */
+  height: 225px; /* Фіксована висота */
+  object-fit: cover; /* Збереження пропорцій зображення */
+  border-radius: 8px;
+}
+
+.game-card h3 {
+  color: #ffffff;
+}
+
+.game-card p {
+  color: #c7d5e0;
+}
+
+.game-card button {
+  background-color: rgba(92, 126, 16, 0.8);
+  border: 2px solid #5c7e10;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.game-card button:hover {
+  background-color: rgba(75, 105, 47, 0.9);
 }

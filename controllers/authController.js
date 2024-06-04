@@ -1,3 +1,5 @@
+//controllers/authController.js
+
 const User = require("../models/User");
 const Role = require("../models/Role");
 const bcrypt = require("bcryptjs");
@@ -15,7 +17,6 @@ const generateAccessToken = (id, roles) => {
 class authController {
   async register(req, res) {
     try {
-      console.log(req.body); // Додано логування req.body
       const { username, email, password } = req.body;
       if (!username || !password || !email) {
         return res.status(400).json({ message: "Всі поля є обов'язковими" });
@@ -50,7 +51,6 @@ class authController {
 
   async login(req, res) {
     try {
-      console.log(req.body); // Додано логування req.body
       const { username, password } = req.body;
       if (!username || !password) {
         return res.status(400).json({ message: "Всі поля є обов'язковими" });
@@ -64,7 +64,13 @@ class authController {
         return res.status(400).json({ message: "Неправильний пароль" });
       }
       const token = generateAccessToken(user._id, user.roles);
-      return res.json({ token });
+      console.log("Generated Token: ", token); // Log generated token
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+      });
+      res.redirect("/home");
     } catch (e) {
       console.log(e);
       res.status(400).json({ message: "Помилка входу" });

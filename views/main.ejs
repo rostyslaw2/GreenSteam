@@ -1,3 +1,5 @@
+<!-- /views/main.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,9 +9,13 @@
     <title>Main Page</title>
   </head>
   <body>
+    <div class="background-image"></div>
     <header>
+      <div class="add-button-container">
+        <button class="add-button" id="addBtn">+</button>
+      </div>
       <h1>GITLER GAMES</h1>
-      <button class="register-button" id="registerBtn">R</button>
+      <button class="register-button" id="registerBtn">Register</button>
     </header>
     <div class="container">
       <h2>Search Games</h2>
@@ -18,15 +24,43 @@
         <button>Search</button>
       </div>
       <div class="games">
-        <!-- Ігри будуть додані тут динамічно через JavaScript -->
+        <% games.forEach(function(game) { %>
+        <div class="game-card">
+          <img src="<%= game.imageUrl %>" alt="<%= game.title %>" />
+          <h3><%= game.title %></h3>
+          <p>Genre: <%= game.genre %></p>
+          <p>Description: <%= game.description %></p>
+          <p>
+            Release Date: <%= new Date(game.releaseDate).toLocaleDateString() %>
+          </p>
+          <p>Rating: <%= game.rating %></p>
+          <button>
+            <a href="/games/<%= game._id %>">Download</a>
+          </button>
+        </div>
+        <% }) %>
       </div>
     </div>
 
     <script>
-      // Get the button that opens the register page
-      var btn = document.getElementById("registerBtn");
+      var addBtn = document.getElementById("addBtn");
+      addBtn.onclick = function () {
+        var token = getCookie("token");
+        window.location.href = "/add";
+      };
 
-      // When the user clicks the button, redirect to the register page
+      function getCookie(name) {
+        let matches = document.cookie.match(
+          new RegExp(
+            "(?:^|; )" +
+              name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+              "=([^;]*)"
+          )
+        );
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+      }
+
+      var btn = document.getElementById("registerBtn");
       btn.onclick = function () {
         window.location.href = "/register";
       };

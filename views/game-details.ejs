@@ -1,0 +1,28 @@
+<!-- /views/game-details.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/game-details.css" />
+    <title><%= game.title %> Details</title>
+  </head>
+  <body>
+    <div class="game-details">
+      <div class="game-image">
+        <img src="<%= game.imageUrl %>" alt="<%= game.title %>" />
+      </div>
+      <div class="game-info">
+        <h2><%= game.title %></h2>
+        <p>Genre: <%= game.genre %></p>
+        <p>Description: <%= game.description %></p>
+        <p>
+          Release Date: <%= new Date(game.releaseDate).toLocaleDateString() %>
+        </p>
+        <p>Rating: <%= game.rating %></p>
+        <a href="<%= game.downloadLink %>">Download</a>
+      </div>
+    </div>
+  </body>
+</html>
